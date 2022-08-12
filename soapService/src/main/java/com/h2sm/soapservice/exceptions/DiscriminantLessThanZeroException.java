@@ -6,8 +6,8 @@ import org.apache.logging.log4j.message.FormattedMessage;
 
 public class DiscriminantLessThanZeroException extends Exception {
 
-    public DiscriminantLessThanZeroException(EquationResponse response, int formula){
-        super("Discriminant is less than zero: " + response.getD() + ", " + formula);
+    public DiscriminantLessThanZeroException(EquationResponse response){
+        super("Discriminant is less than zero: " + response.getD() + " for formula " + response.getFormula());
     }
 
 }

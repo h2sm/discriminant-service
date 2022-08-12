@@ -10,23 +10,21 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class CounterService {
 
-    public EquationResponse countResults(EquationRequest request) {
+    public EquationResponse countResults(EquationRequest request) throws DiscriminantLessThanZeroException {
         var response = new EquationResponse();
-        try {
             makeStringFormula(request, response);
             countDiscriminant(request, response);
             setRoots(request, response);
-        } catch (DiscriminantLessThanZeroException e) {
-            e.printStackTrace();
-        }
         return response;
     }
 
     private void countDiscriminant(EquationRequest request, EquationResponse response)
             throws DiscriminantLessThanZeroException {
-        var discriminant = request.getB() ^ 2 - 4 * request.getA() * request.getC();
-        if (discriminant < 0) throw new DiscriminantLessThanZeroException(response, discriminant);
+        var discriminant = request.getB() * request.getB() - 4 * request.getA() * request.getC();
         response.setD(discriminant);
+        if (discriminant < 0) {
+            throw new DiscriminantLessThanZeroException(response);
+        }
     }
 
     private void makeStringFormula(EquationRequest request, EquationResponse response) {
@@ -38,7 +36,7 @@ public class CounterService {
         } else if (request.getB() == 0) {
             builder.append("+x");
         } else {
-            builder.append("-" + request.getB() + "x");
+            builder.append(request.getB() + "x");
         }
 
         if (request.getC() >= 0) {
@@ -47,16 +45,16 @@ public class CounterService {
             builder.append("-" + request.getC());
         }
 
-        response.setFormula(builder.toString());
+        response.setFormula(builder.append("=0").toString());
     }
 
-    private void setRoots(EquationRequest request, EquationResponse response){
-        if (response.getD() == 0){
+    private void setRoots(EquationRequest request, EquationResponse response) {
+        if (response.getD() == 0) {
             response.setX1(-request.getB() / 2.0 * request.getA());
             response.setX2(0);
         } else {
-            response.setX1((-request.getB() + Math.sqrt(response.getD()))/ 2 * request.getA());
-            response.setX2((-request.getB() - Math.sqrt(response.getD()))/ 2 * request.getA());
+            response.setX1((-request.getB() + Math.sqrt(response.getD())) / 2 * request.getA());
+            response.setX2((-request.getB() - Math.sqrt(response.getD())) / 2 * request.getA());
         }
     }
 }

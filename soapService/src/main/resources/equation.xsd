@@ -1,28 +1,26 @@
+<xs:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.h2sm.com/testtask/objects"
+           elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            targetNamespace="http://www.h2sm.com/testtask/objects"
-            xmlns:tns="http://www.h2sm.com/testtask/objects"
-            elementFormDefault="qualified">
+    <xs:element name="EquationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="a" type="xs:int"/>
+                <xs:element name="b" type="xs:int"/>
+                <xs:element name="c" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
-    <xsd:element name="EquationRequest">
-        <xsd:complexType>
-            <xsd:sequence>
-                <xsd:element name="a" type="xsd:int"/>
-                <xsd:element name="b" type="xsd:int"/>
-                <xsd:element name="c" type="xsd:int"/>
-            </xsd:sequence>
-        </xsd:complexType>
-    </xsd:element>
+    <xs:element name="EquationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="formula" type="xs:string"/>
+                <xs:element name="D" type="xs:double"/>
+                <xs:element name="x1" type="xs:double"/>
+                <xs:element name="x2" type="xs:double"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
-    <xsd:element name="EquationResponse">
-        <xsd:complexType>
-            <xsd:sequence>
-                <xsd:element name="formula" type="xsd:string"/>
-                <xsd:element name="D" type="xsd:double"/>
-                <xsd:element name="x1" type="xsd:double"/>
-                <xsd:element name="x2" type="xsd:double"/>
-            </xsd:sequence>
-        </xsd:complexType>
-    </xsd:element>
-
-</xsd:schema>
+</xs:schema>
