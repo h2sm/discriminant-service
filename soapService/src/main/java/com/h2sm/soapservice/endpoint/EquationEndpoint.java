@@ -1,9 +1,8 @@
-package com.h2sm.testtask.endpoint;
+package com.h2sm.soapservice.endpoint;
 
-import com.h2sm.testtask.exceptions.DiscriminantLessThanZeroException;
 import com.h2sm.testtask.objects.EquationRequest;
 import com.h2sm.testtask.objects.EquationResponse;
-import com.h2sm.testtask.services.CounterService;
+import com.h2sm.soapservice.services.CounterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -13,7 +12,7 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 @Endpoint
 @RequiredArgsConstructor
 public class EquationEndpoint {
-    public static final String URI = "/count";
+    public static final String URI = "http://localhost:8080/count";
     public static final String LOCAL_PART = "EquationRequest";
     private final CounterService counterService;
 

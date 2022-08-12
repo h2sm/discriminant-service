@@ -1,6 +1,6 @@
-package com.h2sm.testtask.services;
+package com.h2sm.soapservice.services;
 
-import com.h2sm.testtask.exceptions.DiscriminantLessThanZeroException;
+import com.h2sm.soapservice.exceptions.DiscriminantLessThanZeroException;
 import com.h2sm.testtask.objects.EquationRequest;
 import com.h2sm.testtask.objects.EquationResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +25,7 @@ public class CounterService {
     private void countDiscriminant(EquationRequest request, EquationResponse response)
             throws DiscriminantLessThanZeroException {
         var discriminant = request.getB() ^ 2 - 4 * request.getA() * request.getC();
-        if (discriminant < 0) throw new DiscriminantLessThanZeroException();
+        if (discriminant < 0) throw new DiscriminantLessThanZeroException(response, discriminant);
         response.setD(discriminant);
     }
 

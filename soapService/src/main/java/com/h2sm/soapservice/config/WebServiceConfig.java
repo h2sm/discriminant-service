@@ -1,4 +1,4 @@
-package com.h2sm.testtask.config;
+package com.h2sm.soapservice.config;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
