@@ -12,3 +12,7 @@
 3) В терминале перейти к корню проекта
 4) Выполнить команду docker build -f Dockerfile -t test . (обязательно с точкой в конце)
 5) Выполнить команду docker run -p 8080:8080 -p 8081:8081 test
+
+Тестовые команды: 
+
+1) curl --header "content-type: text/xml" -d @testRequest.xml http://localhost:8081/ws

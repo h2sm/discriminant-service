@@ -1,0 +1,11 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+				  xmlns:gs="http://www.h2sm.com/testtask/objects">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <gs:EquationRequest>
+         <gs:a>1</gs:a>
+         <gs:b>1</gs:b>
+         <gs:c>2</gs:c>         
+      </gs:EquationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
