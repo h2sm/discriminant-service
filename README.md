@@ -16,3 +16,4 @@
 Тестовые команды: 
 
 1) curl --header "content-type: text/xml" -d @testRequest.xml http://localhost:8081/ws
+2) http://localhost:8080/api/calc?a=3&b=-14&c=-5
