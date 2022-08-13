@@ -34,7 +34,7 @@ public class CounterService {
         if (request.getB() > 0) {
             builder.append("+" + request.getB() + "x");
         } else if (request.getB() == 0) {
-            builder.append("+x");
+            builder.append("+0x");
         } else {
             builder.append(request.getB() + "x");
         }
@@ -42,19 +42,24 @@ public class CounterService {
         if (request.getC() >= 0) {
             builder.append("+" + request.getC());
         } else {
-            builder.append("-" + request.getC());
+            builder.append(request.getC());
         }
 
         response.setFormula(builder.append("=0").toString());
     }
 
     private void setRoots(EquationRequest request, EquationResponse response) {
+        var minusB = -1.0 * request.getB();
+
         if (response.getD() == 0) {
-            response.setX1(-request.getB() / 2.0 * request.getA());
+            response.setX1( minusB / (2.0 * request.getA()));
             response.setX2(0);
         } else {
-            response.setX1((-request.getB() + Math.sqrt(response.getD())) / 2 * request.getA());
-            response.setX2((-request.getB() - Math.sqrt(response.getD())) / 2 * request.getA());
+            var sqrt = Math.sqrt(response.getD());
+            var positive = minusB + sqrt;
+            var negative = minusB - sqrt;
+            response.setX1( positive / (2.0 * request.getA()));
+            response.setX2( negative / (2.0 * request.getA()));
         }
     }
 }
